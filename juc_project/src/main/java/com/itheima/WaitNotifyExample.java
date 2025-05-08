@@ -1,6 +1,5 @@
 package com.itheima;
 
-import com.oracle.jrockit.jfr.Producer;
 
 public class WaitNotifyExample {
     private static final Object lock = new Object();

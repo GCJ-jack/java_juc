@@ -18,12 +18,15 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
+            <version>1.18.30</version>  <!-- 最新稳定版 -->
+            <scope>provided</scope>
         </dependency>
+
+        <!-- Logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>1.5.6</version>  <!-- 最新稳定版 -->
         </dependency>
     </dependencies>
 
