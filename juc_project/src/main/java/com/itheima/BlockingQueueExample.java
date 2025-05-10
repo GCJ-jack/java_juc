@@ -54,5 +54,7 @@ public class BlockingQueueExample {
         System.out.println(queue.take());
         System.out.println(queue.take());
 
+        System.out.println(Math.max(1,2));
+
     }
 }
