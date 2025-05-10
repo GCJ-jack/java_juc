@@ -1,12 +1,14 @@
 package com.itheima.reflection;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
 public class refection1 {
 
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         //方法1通过class路径
         Class class1 = Class.forName("com.itheima.reflection.Student");
 
@@ -61,6 +63,31 @@ public class refection1 {
         System.out.println(declaredMethod2);
 //
 //        Class class4 = Student.class;
+
+//        获取构造方法
+//        getConstructor(参数类型列表)//获取公开的构造方法
+//        getConstructors()//获取所有的公开的构造方法
+//        getDeclaredConstructors()//获取所有的构造方法,包括私有
+//        getDeclaredConstructor(int.class,String.class)//获取指定包括私有,不包括继承的Constructor对象
+
+        Constructor c = class1.getConstructor(String.class,int.class,String.class);
+
+        Object obj = c.newInstance("chaojun",23,"male");
+
+        System.out.println(((Student)obj).toString());
+
+        Field f = class3.getDeclaredField("gender");
+
+        f.setAccessible(true);
+
+        f.set(obj,"female");
+
+        System.out.println("修改后");
+        System.out.println(((Student)obj).toString());
+
+        //通过反射创建方法
+        Method m1 = class1.getMethod("getName");
+        System.out.println(m1.invoke(obj));
     }
 }
 
@@ -96,5 +123,13 @@ class Student{
     public String getGender() {
         return gender;
 
+    }
+
+    public String toString(){
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
